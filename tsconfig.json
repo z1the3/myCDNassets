@@ -3,9 +3,11 @@
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
         "removeComments": true,
+        "outDir": "./dist"
     },
     "files": [
         "main.ts",
         "routeConvention.ts"
-      ]
+      ],
+    
 }

@@ -7,7 +7,7 @@ import chalk from 'chalk'
 // 解决 __dirname 无法在esm模块中使用
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
-const dir = join(__dirname,'assets')
+const dir = join(__dirname,'../','assets')
 const routes = getConventionRoutes({base: dir})
 Object.keys(routes).forEach(k=>{
     const filepath = routes[k].filepath
