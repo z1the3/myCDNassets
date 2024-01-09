@@ -29,6 +29,6 @@ function createAssetsSrc(filepath:string,filename:string):string{
     const temp = filepath.split('assets')
     const suffix = temp[temp.length-1]
     // 注意目录可能有多个assets关键词, 最末一个是有效的
-    const src = prefix + suffix + '/' + filename
+    const src = prefix + '/assets' + suffix + '/' + filename
     return src
 }
