@@ -16,7 +16,7 @@ Object.keys(routes).forEach(k=>{
             const src = createAssetsSrc(filepath,filename || '')
             console.log(chalk.blue(src))
             // 如果是图片，生成html标签
-            if(['.png','.jpg'].includes(extname(filename || ''))){
+            if(['.png','.jpg','.jpeg'].includes(extname(filename || ''))){
                 console.log(chalk.yellow(`<img src="${src}" width="500"/>`))
             }
         
