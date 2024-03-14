@@ -1,5 +1,5 @@
 # name属性用来指定这个工作流的名字
-name: npm to deploy-vui and create release
+name: create release
 on:
   # 当对分支main进行push操作的时候,触发该条工作流
   push:
@@ -12,7 +12,7 @@ jobs:
       id: version
       uses: ashley-taylor/read-json-property-action@v1.0
       with:
-        path: ../../package.json
+        path: ./package.json
         property: version
     - name: 创建GitHub Release
       id: create_release
