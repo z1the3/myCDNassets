@@ -8,10 +8,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
     - name: 读取当前版本号
       id: version
-      uses: ./
+      uses: notiz-dev/github-action-json-property@release
       with:
         path: 'package.json'
         prop_path: 'version'
