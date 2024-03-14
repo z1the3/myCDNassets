@@ -8,11 +8,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: 读取当前版本号
       id: version
-      uses: ActionsTools/read-json-action@main
+      uses: ./
       with:
-        file_path: "/package.json"
+        path: 'package.json'
+        prop_path: 'version'
     - name: 创建GitHub Release
       id: create_release
       uses: actions/create-release@latest
