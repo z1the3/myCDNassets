@@ -1,0 +1,27 @@
+# name属性用来指定这个工作流的名字
+name: npm to deploy-vui and create release
+on:
+  # 当对分支main进行push操作的时候,触发该条工作流
+  push:
+    branches: [ main ]
+jobs: 
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 创建GitHub Release
+      id: create_release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.version.outputs.value }}
+        release_name: ${{ steps.version.outputs.value }}
+        body: 图床更新
+        draft: false
+        prerelease: false
+    - name: 读取当前版本号
+      id: version
+      uses: ashley-taylor/read-json-property-action@v1.0
+      with:
+        path: ./package.json
+        property: version
