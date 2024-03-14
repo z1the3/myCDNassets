@@ -12,7 +12,7 @@ jobs:
       id: version
       uses: ActionsTools/read-json-action@main
       with:
-        file_path: "../../package.json"
+        file_path: "/package.json"
     - name: 创建GitHub Release
       id: create_release
       uses: actions/create-release@latest
