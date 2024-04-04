@@ -3,6 +3,9 @@ import path, { extname, join } from 'path';
 import { getConventionRoutes } from './routeConvention.js';
 import chalk from 'chalk'
 
+const ncpPromise = import("copy-paste") as any
+
+
 
 // 解决 __dirname 无法在esm模块中使用
 const __filename = new URL(import.meta.url).pathname;
@@ -16,8 +19,12 @@ Object.keys(routes).forEach(k=>{
             const src = createAssetsSrc(filepath,filename || '')
             console.log(chalk.blue(src))
             // 如果是图片，生成html标签
-            if(['.png','.jpg','.jpeg'].includes(extname(filename || ''))){
+            if(['.png','.jpg','.jpeg','.PNG'].includes(extname(filename || ''))){
                 console.log(chalk.yellow(`<img src="${src}" width="500"/>`))
+                ncpPromise.then((ncp) =>
+                    ncp.copy(`<img src="${src}" width="500"/>`, () => {
+                    console.log('标签已复制')
+                }))
             }
         
         }
